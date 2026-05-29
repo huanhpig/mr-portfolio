@@ -10,7 +10,7 @@ const projectList = ref([
     icon: '🏛️', // 增加一个简单的图标，增强视觉辨识度
     desc: '基于 Meta Quest 3 开发的沉浸式文化体验。项目实现了高性能的 Passthrough 穿透效果，并在移动端硬件上将总面数严格控制在安全线内。利用空间锚点（Spatial Anchors）实现了大空间内的虚实精准对齐。',
     techStack: ['Unity', 'Meta MRUK', 'C#', '混合现实'],
-    videoUrl: 'http://video.lh-xr.top/11.mp4'
+    videoUrl: 'https://video.lh-xr.top/11.mp4'
   },
   {
     id: 'cross-platform-mall',
@@ -19,7 +19,7 @@ const projectList = ref([
     icon: '🛋️', // 增加图标
     desc: '一套打通 iOS、Android 和 XR 端的家具网格自动吸附与动态加载系统。前端基于组件化架构开发，资源管理部分采用 Addressables 进行按需加载，完美解决了多平台数据同步与本地渲染的性能瓶颈。',
     techStack: ['Vue 3', 'Tailwind CSS', 'C#', 'Addressables'],
-    videoUrl: 'http://video.lh-xr.top/11.mp4'
+    videoUrl: 'https://video.lh-xr.top/11.mp4'
   }
 ])
 
@@ -65,13 +65,15 @@ const currentProject = computed(() => {
     <main class="content-display">
       <article v-if="currentProject" :key="currentProject.id" class="project-showcase">
         <div class="video-container">
-          <video 
-            :src="currentProject.videoUrl" 
-            controls 
-            preload="metadata"
-            playsinline
-            class="main-video"
-          >
+          <video
+           :src="currentProject.videoUrl"
+           controls
+           preload="metadata"
+           playsinline
+           class="main-video"
+           controlslist="nodownload" 
+           oncontextmenu="return false;"
+         >
             您的浏览器不支持播放该视频。
           </video>
         </div>
