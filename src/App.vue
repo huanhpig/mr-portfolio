@@ -1,5 +1,6 @@
 <template>
   <div class="app-wrapper">
+    <!-- 1. 科技感开场：XR 系统启动屏 -->
     <transition name="portal-split">
       <div v-if="isBooting" class="intro-screen">
         <div class="cyber-grid"></div>
@@ -24,6 +25,7 @@
       </div>
     </transition>
 
+    <!-- 2. 主页面 -->
     <div 
       class="portfolio-container" 
       :class="{ 
@@ -31,20 +33,24 @@
         'cinema-mode-active': isCinemaMode 
       }"
     >
+      <!-- 网页底层：70颗空间粒子群 -->
       <div class="particles-container" v-if="!isBooting">
         <div v-for="n in 70" :key="n" class="space-particle" :style="generateParticleStyle(n)"></div>
       </div>
 
+      <!-- 全息极光氛围光晕 -->
       <div class="nebula-glow glowing-cyan"></div>
       <div class="nebula-glow glowing-blue"></div>
       <div class="nebula-glow glowing-purple"></div>
 
+      <!-- 顶部标题区 -->
       <header class="header">
         <div class="tag-badge"># XR & AI TOOLCHAIN DEVELOPER #</div>
         <h1 class="glow-title">空间计算与 AI 效能 · 研发档案</h1>
         <p class="subtitle">涵盖 VR/MR 沉浸交互空间与 Unity MCP AI 自动化管线 · 核心实录</p>
       </header>
 
+      <!-- 5项目空间导航卡片 -->
       <section class="project-selector">
         <div 
           v-for="(item, index) in projects" 
@@ -71,6 +77,7 @@
         </div>
       </section>
 
+      <!-- 次时代 HUD 视频播放舱 -->
       <main class="showcase-area">
         <div class="video-frame" :class="{ 'cinema-frame': isCinemaMode }">
           <span class="hud-corner top-left"></span>
@@ -90,6 +97,7 @@
             </div>
           </div>
 
+          <!-- 🔥 核心升级：全平台防劫持、防下载、防投屏、防长按视频配置 🔥 -->
           <video 
             :key="currentProject.video"
             :src="currentProject.video" 
@@ -97,10 +105,14 @@
             autoplay
             playsinline
             webkit-playsinline
-            x5-video-player-type="h5"
-            controlslist="nodownload" 
+            x5-playsinline="true"
+            x5-video-player-type="h5-page"
+            x5-video-player-fullscreen="false"
+            t7-video-player-type="inline"
+            controlslist="nodownload noremoteplayback noplaybackrate"
+            disablePictureInPicture
             oncontextmenu="return false;"
-            class="cyber-video"
+            class="cyber-video no-save"
           ></video>
 
           <div class="hud-overlay-footer">
@@ -109,6 +121,7 @@
           </div>
         </div>
 
+        <!-- 项目结构化排版区 -->
         <transition name="fade-slide" mode="out-in">
           <div :key="currentProject.id" class="project-details">
             <div class="detail-header">
@@ -117,11 +130,13 @@
             </div>
             
             <div class="structured-desc">
+              <!-- 核心概述栏 -->
               <div class="desc-card role-bar" :class="{ 'ai-role-bar': currentProject.isAI }">
                 <strong>项目角色：</strong> <span><b>{{ currentProject.role }}</b></span>
                 <strong style="margin-left: 20px;">项目描述：</strong> <span>{{ currentProject.summary }}</span>
               </div>
               
+              <!-- 亮点三网格排版 -->
               <div class="highlights-grid">
                 <div v-for="(hl, i) in currentProject.highlights" :key="i" class="hl-item">
                   <h4>⚡ {{ hl.title }}</h4>
@@ -130,6 +145,7 @@
               </div>
             </div>
 
+            <!-- 技术标签群 -->
             <div class="tags-wrapper">
               <span v-for="tag in currentProject.tags" :key="tag" class="tech-tag" :class="{ 'ai-tag': currentProject.isAI }">
                 <span class="tag-icon">#</span> {{ tag }}
@@ -236,7 +252,7 @@ const projects = ref([
     category: '虚拟演出 / 镜头控制',
     shortCategory: 'XR 叙事',
     role: 'Unity 开发工程师',
-    summary: '基于 Unity 开发的扩展现实叙事项目，负责多场景的 MR 空间定位、全景演出、角色 IK 绑定核心交互开发。',
+    summary: '基于 Unity 开发的扩展现实叙事项目，负责多场景的 MR 空间定位、全景演出、角色 IK 绑定及物理破碎核心交互开发。',
     highlights: [
       { title: '标签驱动空间自动匹配', content: '设计基于 MR Anchor Label 的定位方案，支持目标物体按锚点标签自动对齐、法线方向判定与 Inside/Outside 偏移锁定，大幅提升复现稳定性。' },
       { title: 'Cinemachine 编排化动态演出', content: '利用 DollyTrack/DollyCart 结合路径速度控制与触发点事件驱动镜头轨道演出，确保全沉浸视角的平滑飞行动画表现。' },
@@ -403,6 +419,20 @@ const switchProject = (id) => { currentId.value = id }
 .cinema-btn:hover { background: #00f0ff; color: #000; box-shadow: 0 0 15px rgba(0, 240, 255, 0.6); }
 .hud-overlay-footer { position: absolute; bottom: 0; left: 0; width: 100%; padding: 12px 24px; display: flex; justify-content: space-between; align-items: center; background: linear-gradient(0deg, rgba(0,0,0,0.7) 0%, transparent 100%); font-family: monospace; font-size: 11px; color: rgba(255, 255, 255, 0.5); pointer-events: none; z-index: 8; }
 .cyber-video { width: 100%; aspect-ratio: 16 / 9; display: block; }
+
+/* 🔥 新增防长按、防拖拽保存定制样式 🔥 */
+.cyber-video.no-save {
+  -webkit-touch-callout: none !important;
+  -webkit-user-select: none !important;
+  user-select: none !important;
+  pointer-events: auto;
+}
+video::-webkit-media-controls-enclosure {
+  overflow: hidden;
+}
+video::-webkit-media-controls-panel {
+  width: calc(100% + 35px);
+}
 
 /* 文本结构化区 */
 .project-details { margin-top: 28px; padding: 4px 10px 0; transition: all 0.3s ease; }
