@@ -1,3 +1,4 @@
+import HlsPlayer from './HlsPlayer.vue'
 <template>
   <div class="app-wrapper">
     <!-- 1. 科技感开场：XR 系统启动屏 -->
@@ -97,23 +98,7 @@
             </div>
           </div>
 
-          <!-- 🔥 核心升级：全平台防劫持、防下载、防投屏、防长按视频配置 🔥 -->
-          <video 
-            :key="currentProject.video"
-            :ref="el => setVideoRef(el, currentProject.video)"
-            controls 
-            autoplay
-            playsinline
-            webkit-playsinline
-            x5-playsinline="true"
-            x5-video-player-type="h5-page"
-            x5-video-player-fullscreen="false"
-            t7-video-player-type="inline"
-            controlslist="nodownload noremoteplayback noplaybackrate"
-            disablePictureInPicture
-            oncontextmenu="return false;"
-            class="cyber-video no-save"
-          ></video>
+          <HlsPlayer :src="currentProject.video" />
 
           <div class="hud-overlay-footer">
             <span>DEVICE: META QUEST 3 // INFRASTRUCTURE</span>
