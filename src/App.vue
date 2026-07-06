@@ -100,7 +100,7 @@
           <!-- 🔥 核心升级：全平台防劫持、防下载、防投屏、防长按视频配置 🔥 -->
           <video 
             :key="currentProject.video"
-            :src="currentProject.video" 
+            :ref="el => setVideoRef(el, currentProject.video)"
             controls 
             autoplay
             playsinline
@@ -161,6 +161,20 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 
+const setVideoRef = (el, url) => {
+  if (!el) return;
+  // 如果是普通链接，直接赋值；如果想进一步加密，可以在这里 fetch 后转 blob
+  // 为了确保兼容性和防劫持，我们不直接暴露原始 URL
+  if (!el.src) {
+    fetch(url)
+      .then(response => response.blob())
+      .then(blob => {
+        const blobUrl = URL.createObjectURL(blob);
+        el.src = blobUrl;
+      })
+      .catch(() => { el.src = url; }); // 降级处理
+  }
+};
 // 开场屏逻辑
 const isBooting = ref(true)
 const bootProgress = ref(0)
