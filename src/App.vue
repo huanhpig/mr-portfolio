@@ -1,4 +1,3 @@
-import HlsPlayer from './HlsPlayer.vue'
 <template>
   <div class="app-wrapper">
     <!-- 1. 科技感开场：XR 系统启动屏 -->
@@ -145,6 +144,7 @@ import HlsPlayer from './HlsPlayer.vue'
 
 <script setup>
 import { ref, computed, onMounted } from 'vue'
+import HlsPlayer from './HlsPlayer.vue'
 
 const setVideoRef = (el, url) => {
   if (!el) return;
@@ -257,7 +257,7 @@ const projects = ref([
       { title: 'Cinemachine 编排化动态演出', content: '利用 DollyTrack/DollyCart 结合路径速度控制与触发点事件驱动镜头轨道演出，确保全沉浸视角的平滑飞行动画表现。' },
       { title: 'Timeline 驱动与玩法闭环', content: '通过 Timeline 联动剧情演出与窗口遮挡转场；自研弹弓打靶玩法，实现包含命中判定、多阶段触发在内的完整交互闭环。' }
     ],
-    video: 'https://video.lh-xr.top/TianXia_2026630222450.mp4',
+    video: 'https://video.lh-xr.top/TianXia.mp4',
     tags: ['Unity URP', 'Meta XR SDK', 'Cinemachine', 'Timeline', 'VFX Graph']
   },
   {
