@@ -306,7 +306,7 @@ const projects = ref([
       { title: '组件自愈与智能纠错扫描', content: '编写定制化 Prompts 检索器，针对 XR 项目复杂的空间锚点挂载错误、缺少 ISDK 碰撞器等场景隐患进行一键诊断与自动修复。' },
       { title: '自然语言驱动场景重构', content: '彻底变革手动拖拽与繁琐配置的重复劳动，支持通过自然语言下发复杂场景建构指令，单次工程场景搭建时间缩短 80% 以上。' }
     ],
-    video: 'https://video.lh-xr.top/MCP_AI.mp4',
+    video: 'https://video.lh-xr.top/AIMCP.mp4',
     tags: ['Unity MCP Protocol', 'LLM Agent', 'Editor 工具链', 'C# Reflection', '自动化管线', 'DevOps']
   }
 ])
