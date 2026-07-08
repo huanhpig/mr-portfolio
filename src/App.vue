@@ -46,8 +46,8 @@
       <!-- 顶部标题区 -->
       <header class="header">
         <div class="tag-badge"># XR & AI TOOLCHAIN DEVELOPER #</div>
-        <h1 class="glow-title">空间计算与 AI 效能 · 研发档案</h1>
-        <p class="subtitle">涵盖 VR/MR 沉浸交互空间与 Unity MCP AI 自动化管线 · 核心实录</p>
+        <h1 class="glow-title">Unity VR / MR 客户端开发作品集</h1>
+        <p class="subtitle">Meta Quest · Unity · 空间计算 · AI 工程实践</p>
       </header>
 
       <!-- 5项目空间导航卡片 -->
@@ -112,7 +112,15 @@
               <span class="cate-label">{{ currentProject.category }}</span>
               <h2>{{ currentProject.title }}</h2>
             </div>
-            
+            <!-- 新增：颗粒度负责模块清单 -->
+            <div v-if="currentProject.responsibilities" class="responsibilities-list" :class="{ 'ai-resp-list': currentProject.isAI }">
+              <span class="resp-label">⚡ 本人负责：</span>
+              <div class="resp-items">
+                <span v-for="(item, index) in currentProject.responsibilities" :key="index" class="resp-item">
+                  <span class="check-icon">✔</span> {{ item }}
+                </span>
+              </div>
+            </div>
             <div class="structured-desc">
               <!-- 核心概述栏 -->
               <div class="desc-card role-bar" :class="{ 'ai-role-bar': currentProject.isAI }">
@@ -235,27 +243,29 @@ const projects = ref([
     category: '混合现实 / 场景构建',
     shortCategory: 'MR 漫游',
     role: '核心客户端开发',
-    summary: '一款基于 Meta Quest 3 透视技术的混合现实深度应用，支持真实房间扫描、虚拟家具物理吸附及全局光照/材质特效实时联动。',
+    responsibilities: ['MR 空间交互开发', 'MR 空间定位', '家具摆放与空间吸附', 'Addressables 资源管理', 'ScriptableObject 数据驱动', 'ISDK 交互框架', '生命周期与稳定性优化'],
+    summary: '基于 Meta Quest 3 Passthrough 开发的 MR 家居应用，实现房间扫描、全局光照/材质特效实时联动、家具摆放及虚实融合交互。',
     highlights: [
-      { title: '异步资产加载与防死锁', content: '重构 Addressables 两段式管线，引入 SafetyTimeoutGuard 熔断机制与协程状态机，彻底消除了异步调用引发的静默崩溃与加载死锁困境。' },
-      { title: '空间感知与精准对齐', content: '基于 Meta XR SDK 与 MRUK 构建物理吸附系统与真实房间空间锚点（WallSnapZone），利用矩阵变换精准控制家具贴合，攻克了物体偏移难题。' },
-      { title: '数据驱动 UI 与底层防护', content: '使用 ScriptableObject 解耦 UI 逻辑与实体数据。深度封装 ISDK 事件代理并规范 OnDestroy 生命周期清理，根除了重载场景时的游离内存泄漏。' }
+      { title: 'Addressables 异步资源管理', content: '封装 Addressables 加载流程，引入资源加载超时保护及状态管理，避免异常情况下加载阻塞，提高资源加载稳定性。' },
+      { title: 'MR 空间语义交互', content: '基于 MRUK 获取墙面、地面等空间语义，实现家具自动吸附、位置校正及朝向调整。' },
+      { title: '数据驱动配置', content: '使用 ScriptableObject 管理家具配置及 UI 数据，实现资源映射与内容快速扩展。' }
     ],
     video: 'https://video.lh-xr.top/Home.mp4',
     tags: ['Unity 2022', 'C#', 'Meta ISDK', 'MRUK', 'Addressables', 'DOTween']
   },
   {
     id: 2,
-    navTitle: 'XR/MR 叙事互动系统',
-    title: 'Unity XR/MR 赛博叙事与镜头互动系统',
+    navTitle: 'VR/MR 叙事互动系统',
+    title: 'Unity VR/MR 叙事与镜头互动系统',
     category: '虚拟演出 / 镜头控制',
     shortCategory: 'XR 叙事',
     role: 'Unity 开发工程师',
+    responsibilities: ['MR 场景定位', 'Cinemachine 镜头控制', 'Timeline 剧情演出', '小游戏玩法实现', '角色交互开发'],
     summary: '基于 Unity 开发的扩展现实叙事项目，负责多场景的 MR 空间定位、全景演出、角色 IK 绑定核心交互开发。',
     highlights: [
-      { title: '标签驱动空间自动匹配', content: '设计基于 MR Anchor Label 的定位方案，支持目标物体按锚点标签自动对齐、法线方向判定与 Inside/Outside 偏移锁定，大幅提升复现稳定性。' },
-      { title: 'Cinemachine 编排化动态演出', content: '利用 DollyTrack/DollyCart 结合路径速度控制与触发点事件驱动镜头轨道演出，确保全沉浸视角的平滑飞行动画表现。' },
-      { title: 'Timeline 驱动与玩法闭环', content: '通过 Timeline 联动剧情演出与窗口遮挡转场；自研弹弓打靶玩法，实现包含命中判定、多阶段触发在内的完整交互闭环。' }
+      { title: '标签驱动空间自动匹配', content: '基于 MR Anchor Label 实现场景自动定位及空间匹配，支持目标物体按锚点标签自动对齐、法线方向判定与 Inside/Outside 偏移锁定，大幅提升复现稳定性。' },
+      { title: 'Cinemachine + Timeline 剧情演出', content: '利用 DollyTrack/DollyCart 结合路径速度控制与触发点事件驱动镜头轨道演出，确保全沉浸视角的平滑飞行动画表现。' },
+      { title: 'Timeline 剧情系统', content: '通过 Timeline 联动剧情演出与窗口遮挡转场；自研弹弓打靶玩法，实现包含命中判定、多阶段触发在内的完整交互闭环。' }
     ],
     video: 'https://video.lh-xr.top/TianXia.mp4',
     tags: ['Unity URP', 'Meta XR SDK', 'Cinemachine', 'Timeline', 'VFX Graph']
@@ -267,11 +277,12 @@ const projects = ref([
     category: '虚拟现实 / BIM可视化',
     shortCategory: 'VR 定制',
     role: 'Unity VR 客户端 / 交互开发',
+    responsibilities: ['VR 交互开发', 'UI 导航系统', '动画与视觉表现', '场景交互逻辑'],
     summary: '面向装配式建筑研发的沉浸式空间定制展示系统，围绕空间锚定与视线导航构建全场景模块化配置流程。',
     highlights: [
-      { title: '模块化配置与空间锚定', content: '基于 Spatial Anchor 规范房间对象的初始化与状态恢复，将硬装结构拆分为可配置模块，支持墙面、吊顶及材质等部件的无缝动态热替换。' },
-      { title: '事件驱动型交互生态', content: '设计视线检测（Gaze Interaction）、全息菜单与动画状态联动的事件流，构建多通道交互闭环，大幅提升 VR 空间内的操作效率。' },
-      { title: '多维环境渲染与平滑反馈', content: '应用数据层隔离控制多套大空间设计方案的解耦切换，联动动态加载机制与平滑缓动反馈，达成高沉浸的样板间漫游。' }
+      { title: 'Spatial Anchor 空间定位', content: '基于 Spatial Anchor 规范房间对象的初始化与状态恢复，将硬装结构拆分为可配置模块，支持墙面、吊顶及材质等部件的无缝动态热替换。' },
+      { title: '视线交互系统', content: '设计视线检测（Gaze Interaction）、全息菜单与动画状态联动的事件流，构建多通道交互闭环，大幅提升 VR 空间内的操作效率。' },
+      { title: '模块化房间配置', content: '应用数据层隔离控制多套大空间设计方案的解耦切换，联动动态加载机制与平滑缓动反馈，达成高沉浸的样板间漫游。' }
     ],
     video: 'https://video.lh-xr.top/JingGong.mp4',
     tags: ['Unity', 'Meta XR / Oculus', 'Spatial Anchor', 'Shader Graph', 'AudioMixer']
@@ -283,6 +294,7 @@ const projects = ref([
     category: '大空间协同 / 数字孪生',
     shortCategory: 'XR 导览',
     role: 'Unity XR 开发工程师',
+    responsibilities: ['Spatial Anchor','手柄可视化配置开发', 'XR UI 开发', '多媒体播放系统'],
     summary: '面向高校周年庆开发的校区 XR 导览应用，支持空间锚点持久化、全息沙盘多媒体讲解，适配 Quest 设备沉浸体验。',
     highlights: [
       { title: '空间锚点持久化分组', content: '基于 Meta XR Spatial Anchors 实现空间锚点的创建、擦除与持久化，支持多锚点分组管理与场景重建后的全自动恢复。' },
@@ -290,24 +302,24 @@ const projects = ref([
       { title: '全息沙盘动态数据管线', content: '利用 ScriptableObject 组装建筑多媒体数据；沙盘控制系统支持平移缩放约束，并通过自定义 Shader 参数同步渲染高亮半径。' }
     ],
     video: 'https://video.lh-xr.top/XiYou.mp4',
-    tags: ['Unity 2022.3', 'Oculus SDK', 'Spatial Anchors', 'Newtonsoft.Json', 'VideoPlayer']
+    tags: ['Unity 2022', 'Oculus SDK', 'Spatial Anchors', 'VideoPlayer', 'ScriptableObject']
   },
   {
     id: 5,
     isAI: true,
-    navTitle: 'Unity MCP · AI 自动化管线',
-    title: '基于 Model Context Protocol 的 Unity 编辑器 AI 自动化开发管线',
-    category: 'AI 工具链架构 / 研发效能赋能',
-    shortCategory: '🤖 AI 自动化',
-    role: 'AI 工具链开发工程师',
-    summary: '基于 LLM Agent 与 MCP (Model Context Protocol) 开放协议，构建一套端到端的 Unity 自动化研发管线。通过标准化开发流程，将工程初始化与组件配置效率提升至数倍量级。',
+    navTitle: 'Unity MCP AI 辅助开发实践',
+    title: '基于 Unity MCP 的 AI 辅助开发实践',
+    category: 'AI 辅助开发 / Unity 编辑器效率实践',
+    shortCategory: '🤖 AI 自动化实践',
+    role: 'Unity 开发工程师',
+    summary: '结合 Codex 与 VS Code Copilot，通过 Unity MCP 对 Unity 编辑器进行自然语言控制，演示 AI 在对象创建、组件配置、场景搭建及编辑器操作中的辅助开发能力，探索 AI 提升 Unity 开发效率的实际应用。',
     highlights: [
-      { title: 'MCP 协议驱动的 Server 架构', content: '深度集成 Unity 内置 MCP Server，利用 C# 反射机制暴露预制体生成、资产检索与层级操作的原子化接口，实现了大模型对编辑器环境的精准读写与逻辑编排。' },
-      { title: 'XR 场景组件自愈与智能纠错', content: '构建定制化 Prompt 检索与诊断管线，针对 XR 项目复杂的空间锚点映射、ISDK 碰撞体依赖等易错点，实现一键式智能扫描与自动修复。' },
-      { title: '自然语言驱动场景重构', content: '自然语言驱动的场景重构范式', content: '重构场景搭建流程，实现由自然语言指令驱动的自动化构建。该方案彻底革新了传统手动配置模式，将单次复杂工程的搭建与联调周期缩短 80% 以上。' }
+      { title: '自然语言控制 Unity 编辑器', content: '通过 Unity MCP 使用自然语言完成 GameObject 创建、组件添加、Hierarchy 管理及基础编辑器操作，减少重复性编辑工作，提高开发效率。' },
+      { title: 'AI 辅助 XR 场景开发', content: '结合 XR 项目开发流程，演示 AI 辅助完成场景对象创建、组件配置、脚本修改及常见问题排查，提升日常开发效率。' },
+      { title: 'Unity MCP 工作流实践', content: '将 Codex、VS Code Copilot 与 Unity MCP 结合使用，探索自然语言驱动的 Unity 编辑器工作流，验证 AI 在 Unity 开发中的辅助价值。' }
     ],
     video: 'https://video.lh-xr.top/AIMCP.mp4',
-    tags: ['Unity MCP Protocol', 'LLM Agent', 'AI 双引擎架构 (CodeX/Copilot)', 'C# Reflection', '自动化研发管线']
+    tags: ['Unity MCP', 'Codex', 'VS Code Copilot', 'Unity Editor', 'AI Assisted Development']
   }
 ])
 
@@ -470,6 +482,63 @@ video::-webkit-media-controls-panel {
 .fade-slide-enter-from { opacity: 0; transform: translateY(15px); }
 .fade-slide-leave-to { opacity: 0; transform: translateY(-15px); }
 
+/* 新增：负责模块清单样式 */
+.responsibilities-list {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding: 12px 16px;
+  background: rgba(0, 240, 255, 0.03);
+  border: 1px dashed rgba(0, 240, 255, 0.25);
+  border-radius: 8px;
+  transition: all 0.3s;
+}
+.responsibilities-list:hover {
+  background: rgba(0, 240, 255, 0.06);
+  border-color: rgba(0, 240, 255, 0.4);
+}
+.resp-label {
+  color: #00f0ff;
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+  padding-top: 2px;
+}
+.resp-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+}
+.resp-item {
+  font-size: 13px;
+  color: #c8e1ff;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: 500;
+}
+.check-icon {
+  color: #00f0ff;
+  font-size: 12px;
+  text-shadow: 0 0 6px rgba(0, 240, 255, 0.6);
+}
+
+/* AI 项目专属变色 */
+.responsibilities-list.ai-resp-list {
+  background: rgba(176, 0, 255, 0.03);
+  border-color: rgba(176, 0, 255, 0.3);
+}
+.responsibilities-list.ai-resp-list:hover {
+  background: rgba(176, 0, 255, 0.06);
+  border-color: rgba(176, 0, 255, 0.5);
+}
+.responsibilities-list.ai-resp-list .resp-label, 
+.responsibilities-list.ai-resp-list .check-icon {
+  color: #d066ff;
+  text-shadow: 0 0 6px rgba(176, 0, 255, 0.6);
+}
+
 /* 手机端自适应 */
 @media (max-width: 768px) {
   .portfolio-container { padding: 24px 12px 60px; }
@@ -503,5 +572,8 @@ video::-webkit-media-controls-panel {
   .desc-card.role-bar { font-size: 13px; }
   .tags-wrapper { gap: 6px; }
   .tech-tag { font-size: 11px; padding: 4px 10px; }
+  /* 放到手机端媒体查询里面 */
+  .responsibilities-list { flex-direction: column; gap: 8px; padding: 10px 12px; }
+  .resp-items { gap: 8px 14px; }
 }
 </style>
