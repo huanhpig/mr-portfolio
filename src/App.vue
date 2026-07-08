@@ -247,28 +247,28 @@ const projects = ref([
     summary: '基于 Meta Quest 3 Passthrough 开发的 MR 家居应用，实现房间扫描、全局光照/材质特效实时联动、家具摆放及虚实融合交互。',
     highlights: [
       { title: 'Addressables 异步资源管理', content: '封装 Addressables 加载流程，引入资源加载超时保护及状态管理，避免异常情况下加载阻塞，提高资源加载稳定性。' },
-      { title: 'MR 空间语义交互', content: '基于 MRUK 获取墙面、地面等空间语义，实现家具自动吸附、位置校正及朝向调整。' },
+      { title: 'MR 空间语义交互', content: '基于 Meta MRUK Scene API 获取墙面、地面等空间语义信息，结合 AnchorPrefabSpawner 实现虚拟家具的自动生成、空间吸附及朝向校正。' },
       { title: '数据驱动配置', content: '使用 ScriptableObject 管理家具配置及 UI 数据，实现资源映射与内容快速扩展。' }
     ],
     video: 'https://video.lh-xr.top/Home.mp4',
-    tags: ['Unity 2022', 'C#', 'Meta ISDK', 'MRUK', 'Addressables', 'DOTween']
+    tags: ['Unity 2022', 'C#', 'Meta XR SDK', 'MRUK','Scene API', 'Addressables', 'DOTween']
   },
   {
     id: 2,
     navTitle: 'VR/MR 叙事互动系统',
     title: 'Unity VR/MR 叙事与镜头互动系统',
-    category: '虚拟演出 / 镜头控制',
+    category: '虚拟演出 / MR 交互',
     shortCategory: 'XR 叙事',
     role: 'Unity 开发工程师',
-    responsibilities: ['MR 场景定位', 'Cinemachine 镜头控制', 'Timeline 剧情演出', '小游戏玩法实现', '角色交互开发'],
-    summary: '基于 Unity 开发的扩展现实叙事项目，负责多场景的 MR 空间定位、全景演出、角色 IK 绑定核心交互开发。',
+    responsibilities: ['MR 场景定位','Hand Tracking 手势交互', 'Cinemachine 镜头控制', 'Timeline 剧情演出', '小游戏玩法实现'],
+    summary: '基于 Unity 开发的 XR 叙事互动项目，负责 MR 场景定位、剧情演出、镜头控制、手势交互及多个场景核心功能开发。',
     highlights: [
       { title: '标签驱动空间自动匹配', content: '基于 MR Anchor Label 实现场景自动定位及空间匹配，支持目标物体按锚点标签自动对齐、法线方向判定与 Inside/Outside 偏移锁定，大幅提升复现稳定性。' },
-      { title: 'Cinemachine + Timeline 剧情演出', content: '利用 DollyTrack/DollyCart 结合路径速度控制与触发点事件驱动镜头轨道演出，确保全沉浸视角的平滑飞行动画表现。' },
-      { title: 'Timeline 剧情系统', content: '通过 Timeline 联动剧情演出与窗口遮挡转场；自研弹弓打靶玩法，实现包含命中判定、多阶段触发在内的完整交互闭环。' }
+      { title: 'Selective Passthrough 混合渲染', content: '基于 EffectMesh 与 Selective Passthrough Shader，实现真实空间与虚拟内容的混合渲染，通过 Cut Holes 控制墙体遮罩效果，增强 MR 场景沉浸感。' },
+      { title: 'Hand Tracking 与剧情交互', content: '基于 Meta ISDK 实现 Hand Tracking 手势交互，结合 Timeline、Cinemachine 完成剧情演出、镜头控制及场景交互，并独立开发弹弓打靶玩法。' }
     ],
     video: 'https://video.lh-xr.top/TianXia.mp4',
-    tags: ['Unity URP', 'Meta XR SDK', 'Cinemachine', 'Timeline', 'VFX Graph']
+    tags: ['Unity URP', 'Meta XR SDK','MRUK','Hand Tracking', 'Selective Passthrough','Cinemachine', 'Timeline', 'VFX Graph']
   },
   {
     id: 3,
