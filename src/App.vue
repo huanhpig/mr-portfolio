@@ -251,7 +251,7 @@ const projects = ref([
     category: '虚拟演出 / 镜头控制',
     shortCategory: 'XR 叙事',
     role: 'Unity 开发工程师',
-    summary: '基于 Unity 开发的扩展现实叙事项目，负责多场景的 MR 空间定位、全景演出、角色 IK 绑定及物理破碎核心交互开发。',
+    summary: '基于 Unity 开发的扩展现实叙事项目，负责多场景的 MR 空间定位、全景演出、角色 IK 绑定核心交互开发。',
     highlights: [
       { title: '标签驱动空间自动匹配', content: '设计基于 MR Anchor Label 的定位方案，支持目标物体按锚点标签自动对齐、法线方向判定与 Inside/Outside 偏移锁定，大幅提升复现稳定性。' },
       { title: 'Cinemachine 编排化动态演出', content: '利用 DollyTrack/DollyCart 结合路径速度控制与触发点事件驱动镜头轨道演出，确保全沉浸视角的平滑飞行动画表现。' },
@@ -300,14 +300,14 @@ const projects = ref([
     category: 'AI 工具链架构 / 研发效能赋能',
     shortCategory: '🤖 AI 自动化',
     role: 'AI 工具链开发工程师',
-    summary: '结合大语言模型 (LLM Agent) 与 MCP 开放协议，构建面向 Unity 编辑器的智能助手与自动化研发管线，把工程初始化与组件配置效率翻倍。',
+    summary: '基于 LLM Agent 与 MCP (Model Context Protocol) 开放协议，构建一套端到端的 Unity 自动化研发管线。通过标准化开发流程，将工程初始化与组件配置效率提升至数倍量级。',
     highlights: [
-      { title: 'MCP 协议对接与 Server 架构', content: '基于 C# Reflection 构建 Unity 内置 MCP Server，暴露预制体生成、资产查询、层级检索等原子工具，让大模型能精准读写场景。' },
-      { title: '组件自愈与智能纠错扫描', content: '编写定制化 Prompts 检索器，针对 XR 项目复杂的空间锚点挂载错误、缺少 ISDK 碰撞器等场景隐患进行一键诊断与自动修复。' },
-      { title: '自然语言驱动场景重构', content: '彻底变革手动拖拽与繁琐配置的重复劳动，支持通过自然语言下发复杂场景建构指令，单次工程场景搭建时间缩短 80% 以上。' }
+      { title: 'MCP 协议驱动的 Server 架构', content: '深度集成 Unity 内置 MCP Server，利用 C# 反射机制暴露预制体生成、资产检索与层级操作的原子化接口，实现了大模型对编辑器环境的精准读写与逻辑编排。' },
+      { title: 'XR 场景组件自愈与智能纠错', content: '构建定制化 Prompt 检索与诊断管线，针对 XR 项目复杂的空间锚点映射、ISDK 碰撞体依赖等易错点，实现一键式智能扫描与自动修复。' },
+      { title: '自然语言驱动场景重构', content: '自然语言驱动的场景重构范式', content: '重构场景搭建流程，实现由自然语言指令驱动的自动化构建。该方案彻底革新了传统手动配置模式，将单次复杂工程的搭建与联调周期缩短 80% 以上。' }
     ],
     video: 'https://video.lh-xr.top/AIMCP.mp4',
-    tags: ['Unity MCP Protocol', 'LLM Agent', 'Editor 工具链', 'C# Reflection', '自动化管线', 'DevOps']
+    tags: ['Unity MCP Protocol', 'LLM Agent', 'AI 双引擎架构 (CodeX/Copilot)', 'C# Reflection', '自动化研发管线']
   }
 ])
 
