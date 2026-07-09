@@ -276,30 +276,30 @@ const projects = ref([
     title: '精工控股集团 VR 室内空间模块化定制与展示系统',
     category: '虚拟现实 / BIM可视化',
     shortCategory: 'VR 定制',
-    role: 'Unity VR 客户端 / 交互开发',
-    responsibilities: ['VR 交互开发', 'UI 导航系统', '动画与视觉表现', '场景交互逻辑'],
-    summary: '面向装配式建筑研发的沉浸式空间定制展示系统，围绕空间锚定与视线导航构建全场景模块化配置流程。',
+    role: 'Unity VR 客户端开发',
+    responsibilities: ['模块化场景配置', '事件驱动交互开发', 'UI 菜单开发', '动画与视觉表现','Shader Graph','DOTween'],
+    summary: '基于 Unity 开发 VR 室内空间展示系统，负责场景模块化配置、交互逻辑开发及动画表现，实现沉浸式室内展示体验。',
     highlights: [
-      { title: 'Spatial Anchor 空间定位', content: '基于 Spatial Anchor 规范房间对象的初始化与状态恢复，将硬装结构拆分为可配置模块，支持墙面、吊顶及材质等部件的无缝动态热替换。' },
-      { title: '视线交互系统', content: '设计视线检测（Gaze Interaction）、全息菜单与动画状态联动的事件流，构建多通道交互闭环，大幅提升 VR 空间内的操作效率。' },
-      { title: '模块化房间配置', content: '应用数据层隔离控制多套大空间设计方案的解耦切换，联动动态加载机制与平滑缓动反馈，达成高沉浸的样板间漫游。' }
+      { title: '模块化场景配置', content: '将墙面、吊顶、材质等房间元素进行模块化设计，实现不同展示方案的动态切换，提高系统扩展性与配置效率。' },
+      { title: '事件驱动交互系统', content: '基于事件驱动架构实现视线检测、UI 菜单、动画播放及场景切换等交互逻辑，降低模块耦合，提高交互响应效率。' },
+      { title: '动画与视觉表现', content: '使用 Animation、DOTween、Shader Graph 与 AudioMixer 实现墙体移动动画、材质切换、动画反馈及音效控制，提升 VR 场景的沉浸感与展示效果。' }
     ],
     video: 'https://video.lh-xr.top/JingGong.mp4',
-    tags: ['Unity', 'Meta XR / Oculus', 'Spatial Anchor', 'Shader Graph', 'AudioMixer']
+    tags: ['Unity', 'Meta XR / Oculus', 'Animation', 'Shader Graph', 'AudioMixer','DOTween', 'Event System']
   },
   {
     id: 4,
     navTitle: '西邮周年庆 XR 导览系统',
     title: '西安邮电大学周年庆 XR 智能校园导览与沙盘交互系统',
-    category: '大空间协同 / 数字孪生',
+    category: 'XR 展示 / 沉浸交互',
     shortCategory: 'XR 导览',
     role: 'Unity XR 开发工程师',
-    responsibilities: ['Spatial Anchor','手柄可视化配置开发', 'XR UI 开发', '多媒体播放系统'],
-    summary: '面向高校周年庆开发的校区 XR 导览应用，支持空间锚点持久化、全息沙盘多媒体讲解，适配 Quest 设备沉浸体验。',
+    responsibilities: ['Hand Tracking 手势交互','XR 3D UI 开发', 'UGUI / TextMeshPro 界面开发', '多媒体播放系统','Quest 平台适配'],
+    summary: '面向高校周年庆展示场景开发的 XR 导览应用，负责 Meta Quest 平台交互模块开发，实现手势操作、3D UI 菜单及多媒体展示功能。',
     highlights: [
-      { title: '空间锚点持久化分组', content: '基于 Meta XR Spatial Anchors 实现空间锚点的创建、擦除与持久化，支持多锚点分组管理与场景重建后的全自动恢复。' },
-      { title: '可视化手柄配置流程', content: '设计手柄交互式锚点配置组件，结合预览物体、辅助连线与状态面板，达成空间位置的可视化增删与边界对齐。' },
-      { title: '全息沙盘动态数据管线', content: '利用 ScriptableObject 组装建筑多媒体数据；沙盘控制系统支持平移缩放约束，并通过自定义 Shader 参数同步渲染高亮半径。' }
+      { title: 'Hand Tracking 手势交互', content: '基于 Meta ISDK 实现 XR 场景手势交互，支持通过手势完成 3D UI 菜单点击、选择等操作，提升自然交互体验。' },
+      { title: 'XR 3D UI 交互系统', content: '结合 UGUI 与 TextMeshPro 构建 XR 场景内交互界面，实现菜单展示、信息显示及用户操作反馈。' },
+      { title: '多媒体展示系统', content: '集成 VideoPlayer 实现场景内视频播放功能，并与 XR UI 交互流程结合，实现建筑介绍等多媒体内容展示。' }
     ],
     video: 'https://video.lh-xr.top/XiYou.mp4',
     tags: ['Unity 2022', 'Oculus SDK', 'Spatial Anchors', 'VideoPlayer', 'ScriptableObject']
