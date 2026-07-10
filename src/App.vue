@@ -1,16 +1,6 @@
 <template>
   <div class="app-wrapper">
-  <div v-if="isWechat" class="wechat-mask" @click="isWechat = false">
-      <div class="wechat-guide-box">
-        <div class="guide-arrow">↗️</div>
-        <h2 class="guide-title">检测到微信环境</h2>
-        <p class="guide-text">
-          为保证 3D 渲染性能与视频正常加载<br>
-          请点击右上角 · 选择 <strong>在浏览器中打开</strong>
-        </p>
-        <button class="guide-btn">我知道了</button>
-      </div>
-    </div>
+  
     <!-- 1. 科技感开场：XR 系统启动屏 -->
     <transition name="portal-split">
       <div v-if="isBooting" class="intro-screen">
@@ -186,8 +176,6 @@
 import { ref, computed, onMounted } from 'vue'
 import HlsPlayer from './HlsPlayer.vue'
 
-// 新增：微信环境状态变量
-const isWechat = ref(false)
 // 新增：一键复制文本功能（方便 HR 复制微信号）
 const copyText = (text, type) => {
   if (navigator.clipboard) {
@@ -222,12 +210,6 @@ const currentStatusText = ref('INITIALIZING ENGINE...')
 const statusMessages = ['INITIALIZING ENGINE...', 'LOADING META MRUK...', 'INITIALIZING MCP SERVER...', 'PASSTHROUGH ONLINE.', 'SYSTEM READY.']
 
 onMounted(() => {
-  // 👇 新增：微信环境检测逻辑
-  const ua = window.navigator.userAgent.toLowerCase();
-  if (ua.includes('micromessenger')) {
-    isWechat.value = true;
-  }
-  // 👆 新增结束
   const interval = setInterval(() => {
     bootProgress.value += Math.floor(Math.random() * 8) + 5
     if (bootProgress.value >= 100) {
@@ -382,22 +364,6 @@ const switchProject = (id) => { currentId.value = id }
 
 <style scoped>
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-····· 
-/* --- 微信引导遮罩层样式 --- */
-.wechat-mask {
-  position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-  background: rgba(10, 15, 30, 0.95); backdrop-filter: blur(8px);
-  z-index: 99999; display: flex; flex-direction: column; align-items: flex-end;
-  padding: 40px 30px; box-sizing: border-box;
-}
-.wechat-guide-box { text-align: right; animation: fadeInDown 0.6s ease-out; }
-.guide-arrow { font-size: 50px; color: #00f0ff; margin-bottom: 20px; animation: bounceUpRight 1.5s infinite; }
-.guide-title { color: #fff; font-size: 24px; margin-bottom: 12px; font-weight: bold; text-shadow: 0 0 10px rgba(0, 240, 255, 0.5); }
-.guide-text { color: #a0aec0; font-size: 15px; line-height: 1.8; margin-bottom: 30px; }
-.guide-text strong { color: #00f0ff; border-bottom: 1px dashed #00f0ff; }
-.guide-btn { background: transparent; border: 1px solid rgba(0, 240, 255, 0.4); color: #00f0ff; padding: 8px 24px; border-radius: 20px; font-size: 14px; cursor: pointer; }
-@keyframes bounceUpRight { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(10px, -10px); } }
-@keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
 
 /* 开场屏 */
 .intro-screen { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #05070a; z-index: 9999; display: flex; align-items: center; justify-content: center; overflow: hidden; }
