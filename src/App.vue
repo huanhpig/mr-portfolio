@@ -59,6 +59,27 @@
         <div class="tag-badge"># XR & AI TOOLCHAIN DEVELOPER #</div>
         <h1 class="glow-title">Unity VR / MR 客户端开发作品集</h1>
         <p class="subtitle">Meta Quest · Unity · 空间计算 · AI 工程实践</p>
+
+       <div class="contact-info-bar">
+          <div class="contact-item copyable" @click="copyText('19926648707@163.com', '邮箱')">
+            <svg class="c-icon email-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            19926648707@163.com
+            <span class="copy-hint">[点击复制]</span>
+          </div>
+          
+          <span class="contact-divider">/</span>
+          
+          <div class="contact-item copyable" @click="copyText('19926648707', '微信号')">
+            <svg class="c-icon wechat-icon" viewBox="0 0 1024 1024" fill="currentColor">
+              <path d="M682.6 768l64 170.6-170.6-85.3c-42.7 21.3-85.3 21.3-149.3 21.3-170.7 0-320-128-320-298.7 0-149.3 128-277.3 298.6-277.3 170.7 0 298.7 128 298.7 277.3 0 85.3-42.7 170.7-128 192z m-405.3-362.7c-32 0-53.3 21.3-53.3 53.4 0 32 21.3 53.3 53.3 53.3 32 0 53.3-21.3 53.4-53.3 0-32-21.3-53.4-53.4-53.4z m213.3 0c-32 0-53.3 21.3-53.3 53.4 0 32 21.3 53.3 53.3 53.3 32 0 53.3-21.3 53.3-53.3 0-32-21.3-53.4-53.3-53.4z m320-256c-170.7 0-320 128-320 277.3 0 21.3 0 32 5.3 53.4C469.3 405.3 586.7 341.3 725.3 341.3c192 0 341.4 128 341.4 298.7 0 64-21.4 128-85.4 170.6l42.7 128-128-64c-32 12.8-53.3 21.3-85.3 21.3-149.3 0-277.3-106.6-277.3-256 0-149.3 128-256 277.3-256z m-128 170.7c-21.3 0-42.7 15.3-42.7 36.6 0 21.3 15.3 42.7 42.7 42.7s42.7-15.3 42.7-42.7c0-21.3-21.3-36.6-42.7-36.6z m256 0c-21.3 0-42.7 15.3-42.7 36.6 0 21.3 15.3 42.7 42.7 42.7s42.7-15.3 42.7-42.7c0-21.3-21.3-36.6-42.7-36.6z"></path>
+            </svg>
+            微信: 19926648707
+            <span class="copy-hint">[点击复制]</span>
+          </div>
+        </div>
       </header>
 
       <!-- 5项目空间导航卡片 -->
@@ -167,6 +188,19 @@ import HlsPlayer from './HlsPlayer.vue'
 
 // 新增：微信环境状态变量
 const isWechat = ref(false)
+// 新增：一键复制文本功能（方便 HR 复制微信号）
+const copyText = (text, type) => {
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(text).then(() => {
+      alert(`✅ ${type} ${text} 已成功复制！期待您的交流。`);
+    }).catch(err => {
+      console.error('复制失败:', err);
+    });
+  } else {
+    // 兼容老版本浏览器
+    alert(`请手动复制${type}: ${text}`);
+  }
+}
 const setVideoRef = (el, url) => {
   if (!el) return;
   // 如果是普通链接，直接赋值；如果想进一步加密，可以在这里 fetch 后转 blob
@@ -348,7 +382,7 @@ const switchProject = (id) => { currentId.value = id }
 
 <style scoped>
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-
+····· 
 /* --- 微信引导遮罩层样式 --- */
 .wechat-mask {
   position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
@@ -419,6 +453,64 @@ const switchProject = (id) => { currentId.value = id }
 .tag-badge { display: inline-block; padding: 4px 14px; background: rgba(0, 240, 255, 0.1); border: 1px solid #00f0ff; color: #00f0ff; font-size: 12px; font-weight: 600; border-radius: 20px; margin-bottom: 12px; }
 .glow-title { font-size: clamp(26px, 6vw, 38px); font-weight: 800; letter-spacing: 2px; margin: 0 0 8px; background: linear-gradient(90deg, #ffffff, #b8c7ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 0 0 20px rgba(0, 240, 255, 0.2); }
 .subtitle { color: #8ba0b5; font-size: 14px; margin: 0; }
+
+/* --- HR 联络舱样式 --- */
+.contact-info-bar {
+  margin-top: 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  background: rgba(0, 240, 255, 0.05);
+  border: 1px solid rgba(0, 240, 255, 0.25);
+  padding: 8px 24px;
+  border-radius: 30px;
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+}
+.contact-info-bar:hover {
+  background: rgba(0, 240, 255, 0.1);
+  border-color: rgba(0, 240, 255, 0.5);
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.15);
+}
+.contact-item {
+  color: #a0aec0;
+  font-size: 13px;
+  font-family: monospace;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.contact-item:hover {
+  color: #00f0ff;
+  text-shadow: 0 0 8px rgba(0, 240, 255, 0.6);
+}
+.c-icon {
+  font-size: 14px;
+}
+.contact-divider {
+  color: rgba(255, 255, 255, 0.2);
+  font-size: 12px;
+}
+.copy-hint {
+  font-size: 11px;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.3s;
+  color: #00f0ff;
+  background: rgba(0, 240, 255, 0.15);
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-left: 4px;
+}
+.contact-item.copyable:hover .copy-hint {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* 手机端适配：放到最下面的 @media (max-width: 768px) 里面 */
 
 /* 5等宽控制台网格 */
 .project-selector { max-width: 1100px; margin: 0 auto 28px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; position: relative; z-index: 2; transition: all 0.6s ease; }
@@ -574,6 +666,26 @@ video::-webkit-media-controls-panel {
   text-shadow: 0 0 6px rgba(176, 0, 255, 0.6);
 }
 
+/* 👇 👇 👇 把这段 SVG 图标样式紧挨着加在这里 👇 👇 👇 */
+/* --- SVG 图标专属样式 --- */
+.c-icon {
+  width: 16px;
+  height: 16px;
+  transition: all 0.3s ease;
+}
+.email-icon {
+  color: #00f0ff; /* 科技感蓝青色 */
+}
+.wechat-icon {
+  color: #07C160; /* 微信官方绿 */
+}
+.contact-item:hover .wechat-icon {
+  filter: drop-shadow(0 0 6px rgba(7, 193, 96, 0.6)); /* 微信绿发光效果 */
+}
+.contact-item:hover .email-icon {
+  filter: drop-shadow(0 0 6px rgba(0, 240, 255, 0.6)); /* 邮箱蓝发光效果 */
+}
+
 /* 手机端自适应 */
 @media (max-width: 768px) {
   .portfolio-container { padding: 24px 12px 60px; }
@@ -610,5 +722,20 @@ video::-webkit-media-controls-panel {
   /* 放到手机端媒体查询里面 */
   .responsibilities-list { flex-direction: column; gap: 8px; padding: 10px 12px; }
   .resp-items { gap: 8px 14px; }
+
+  /* 放到手机端媒体查询里面 */
+  .contact-info-bar {
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px 24px;
+    border-radius: 12px;
+  }
+  .contact-divider {
+    display: none; /* 手机端垂直排列，不需要斜杠分隔符 */
+  }
+  .copy-hint {
+    opacity: 1; /* 手机端没有 hover，直接显示提示 */
+    transform: none;
+  }
 }
 </style>
