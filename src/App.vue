@@ -290,17 +290,17 @@ const projects = ref([
   },
   {
     id: 2,
-    navTitle: 'VR/MR 叙事互动系统',
-    title: 'Unity VR/MR 叙事与镜头互动系统',
-    category: '虚拟演出 / MR 交互',
+    navTitle: 'XR 叙事互动系统',
+    title: 'Unity XR 叙事与混合现实互动系统',
+    category: '虚拟演出 / 混合现实',
     shortCategory: 'XR 叙事',
     role: 'Unity 开发工程师',
-    responsibilities: ['MR 场景定位','Hand Tracking 手势交互', 'Cinemachine 镜头控制', 'Timeline 剧情演出', '小游戏玩法实现'],
-    summary: '基于 Unity 开发的 XR 叙事互动项目，负责 MR 场景定位、剧情演出、镜头控制、手势交互及多个场景核心功能开发。',
+    responsibilities: ['MR 场景定位','Hand Tracking 与自定义手势交互', 'Cinemachine 镜头控制', 'Timeline 剧情演出', 'MR 小游戏玩法开发'],
+    summary: '基于 Unity 与 Meta XR SDK 开发的 XR 叙事互动项目，负责 MR 场景理解、空间定位、Hand Tracking 自然交互、剧情演出及核心玩法开发，实现虚实融合的沉浸式交互体验。',
     highlights: [
-      { title: '标签驱动空间自动匹配', content: '基于 MR Anchor Label 实现场景自动定位及空间匹配，支持目标物体按锚点标签自动对齐、法线方向判定与 Inside/Outside 偏移锁定，大幅提升复现稳定性。' },
-      { title: 'Selective Passthrough 混合渲染', content: '基于 EffectMesh 与 Selective Passthrough Shader，实现真实空间与虚拟内容的混合渲染，通过 Cut Holes 控制墙体遮罩效果，增强 MR 场景沉浸感。' },
-      { title: 'Hand Tracking 与剧情交互', content: '基于 Meta ISDK 实现 Hand Tracking 手势交互，结合 Timeline、Cinemachine 完成剧情演出、镜头控制及场景交互，并独立开发弹弓打靶玩法。' }
+      { title: 'MR 场景理解与空间自动部署', content: '基于 MRUK Scene API 与 Anchor Label 实现场景对象自动定位，根据空间标签完成物体部署，并支持法线方向修正、Inside/Outside 偏移及朝向校准，提高不同扫描环境下的定位精度与内容复现稳定性。' },
+      { title: '混合现实渲染与沉浸式演出', content: '基于 EffectMesh 与 Selective Passthrough Shader，实现真实空间与虚拟内容的混合渲染，通过 Cut Holes 控制墙体遮罩效果，增强 MR 场景沉浸感。' },
+      { title: 'Hand Tracking 与自定义手势识别', content: '基于 Meta ISDK 实现 Grab、Pinch 等自然交互，并结合 Hand Grab Pose、Shape Recognizer 及 Finger Flexion 配置实现自定义手势识别，驱动剧情流程、场景事件及交互逻辑。' }
     ],
     video: 'https://video.lh-xr.top/TianXia.mp4',
     tags: ['Unity URP', 'Meta XR SDK','MRUK','Hand Tracking', 'Selective Passthrough','Cinemachine', 'Timeline', 'VFX Graph']
