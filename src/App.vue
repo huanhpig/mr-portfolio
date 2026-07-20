@@ -278,15 +278,16 @@ const projects = ref([
     category: '混合现实 / 场景构建',
     shortCategory: 'MR 漫游',
     role: '核心客户端开发',
-    responsibilities: ['MR 空间交互开发', 'MR 空间定位', '家具摆放与空间吸附', 'Addressables 资源管理', 'ScriptableObject 数据驱动', 'ISDK 交互框架', '生命周期与稳定性优化'],
-    summary: '基于 Meta Quest 3 Passthrough 开发的 MR 家居应用，实现房间扫描、全局光照/材质特效实时联动、家具摆放及虚实融合交互。',
+    responsibilities: ['场景交互开发', 'Addressables 资源管理', 'ScriptableObject 数据驱动','MR 空间定位', '家具摆放与空间吸附',  'ISDK 交互框架', '生命周期与稳定性优化'],
+    summary: '基于Unity 与 Meta Quest 3 Passthrough 开发的 MR 家居应用，实现房间扫描、全局光照/材质特效实时联动、家具摆放及虚实融合交互。',
     highlights: [
       { title: 'Addressables 异步资源管理', content: '封装 Addressables 加载流程，引入资源加载超时保护及状态管理，避免异常情况下加载阻塞，提高资源加载稳定性。' },
-      { title: 'MR 空间语义交互', content: '基于 Meta MRUK Scene API 获取墙面、地面等空间语义信息，结合 AnchorPrefabSpawner 实现虚拟家具的自动生成、空间吸附及朝向校正。' },
-      { title: '数据驱动配置', content: '使用 ScriptableObject 管理家具配置及 UI 数据，实现资源映射与内容快速扩展。' }
+      { title: '数据驱动配置', content: '使用 ScriptableObject 管理家具配置及 UI 数据，实现资源映射与内容快速扩展。' },
+      { title: 'MR 空间语义交互', content: '基于 Meta MRUK Scene API 获取墙面、地面等空间语义信息，结合 AnchorPrefabSpawner 实现虚拟家具的自动生成、空间吸附及朝向校正。' }
+      
     ],
     video: 'https://video.lh-xr.top/Home.mp4',
-    tags: ['Unity 2022', 'C#', 'Meta XR SDK', 'MRUK','Scene API', 'Addressables', 'DOTween']
+    tags: ['Unity 2022', 'C#', 'Addressables', 'DOTween', 'UGUI','Meta XR SDK', 'MRUK']
   },
   {
     id: 2,
@@ -295,42 +296,42 @@ const projects = ref([
     category: '虚拟演出 / 混合现实',
     shortCategory: 'XR 叙事',
     role: 'Unity 开发工程师',
-    responsibilities: ['MR 场景定位','Hand Tracking 与自定义手势交互', 'Cinemachine 镜头控制', 'Timeline 剧情演出', 'MR 小游戏玩法开发'],
+    responsibilities: ['Cinemachine 镜头控制', 'Timeline 剧情演出','MR 场景定位','Hand Tracking 与自定义手势交互',  'MR 小游戏玩法开发'],
     summary: '基于 Unity 与 Meta XR SDK 开发的 XR 叙事互动项目，负责 MR 场景理解、空间定位、Hand Tracking 自然交互、剧情演出及核心玩法开发，实现虚实融合的沉浸式交互体验。',
     highlights: [
       { title: 'MR 场景理解与空间自动部署', content: '基于 MRUK Scene API 与 Anchor Label 实现场景对象自动定位，根据空间标签完成物体部署，并支持法线方向修正、Inside/Outside 偏移及朝向校准，提高不同扫描环境下的定位精度与内容复现稳定性。' },
-      { title: '混合现实渲染与沉浸式演出', content: '基于 EffectMesh 与 Selective Passthrough Shader，实现真实空间与虚拟内容的混合渲染，通过 Cut Holes 控制墙体遮罩效果，增强 MR 场景沉浸感。' },
+      { title: '剧情演出与玩法开发', content: '基于 Timeline、Cinemachine 完成镜头演出、事件驱动及角色表现；独立开发弹弓小游戏，实现手势拉弓、物理发射、命中检测、计分及结算完整玩法流程。' },
       { title: 'Hand Tracking 与自定义手势识别', content: '基于 Meta ISDK 实现 Grab、Pinch 等自然交互，并结合 Hand Grab Pose、Shape Recognizer 及 Finger Flexion 配置实现自定义手势识别，驱动剧情流程、场景事件及交互逻辑。' }
     ],
     video: 'https://video.lh-xr.top/TianXia.mp4',
-    tags: ['Unity URP', 'Meta XR SDK','MRUK','Hand Tracking', 'Selective Passthrough','Cinemachine', 'Timeline', 'VFX Graph']
+    tags: ['Unity URP', 'Cinemachine', 'Timeline', 'VFX Graph','Meta XR SDK','MRUK','Hand Tracking', 'Selective Passthrough']
   },
   {
     id: 3,
     navTitle: '精工集团 VR 定制系统',
     title: '精工控股集团 VR 室内空间模块化定制与展示系统',
-    category: '虚拟现实 / BIM可视化',
+    category: 'Unity 客户端 / VR 展示',
     shortCategory: 'VR 定制',
-    role: 'Unity VR 客户端开发',
-    responsibilities: ['模块化场景配置', '事件驱动交互开发', 'UI 菜单开发', '动画与视觉表现','Shader Graph','DOTween'],
-    summary: '基于 Unity 开发 VR 室内空间展示系统，负责场景模块化配置、交互逻辑开发及动画表现，实现沉浸式室内展示体验。',
+    role: 'Unity 客户端开发',
+    responsibilities: ['模块化开发', '事件驱动交互开发', 'UI 菜单开发', '动画系统','Shader Graph','DOTween'],
+    summary: '基于 Unity 开发室内空间展示系统，负责模块化配置、UI 交互、动画表现及视觉效果开发，实现沉浸式展示体验。',
     highlights: [
       { title: '模块化场景配置', content: '将墙面、吊顶、材质等房间元素进行模块化设计，实现不同展示方案的动态切换，提高系统扩展性与配置效率。' },
-      { title: '事件驱动交互系统', content: '基于事件驱动架构实现视线检测、UI 菜单、动画播放及场景切换等交互逻辑，降低模块耦合，提高交互响应效率。' },
+      { title: 'UI 与事件驱动交互', content: '基于事件驱动架构实现视线检测、UGUI 菜单、动画播放及场景切换逻辑，降低模块耦合，提高交互响应效率。' },
       { title: '动画与视觉表现', content: '使用 Animation、DOTween、Shader Graph 与 AudioMixer 实现墙体移动动画、材质切换、动画反馈及音效控制，提升 VR 场景的沉浸感与展示效果。' }
     ],
     video: 'https://video.lh-xr.top/JingGong.mp4',
-    tags: ['Unity', 'Meta XR / Oculus', 'Animation', 'Shader Graph', 'AudioMixer','DOTween', 'Event System']
+    tags: ['Unity', 'UGUI', 'Animation', 'Shader Graph', 'AudioMixer','DOTween']
   },
   {
     id: 4,
     navTitle: '西邮周年庆 XR 导览系统',
-    title: '西安邮电大学周年庆 XR 智能校园导览与沙盘交互系统',
-    category: 'XR 展示 / 沉浸交互',
+    title: '西安邮电大学周年庆 XR 校园导览系统',
+    category: 'XR 展示 / 多媒体交互',
     shortCategory: 'XR 导览',
     role: 'Unity XR 开发工程师',
-    responsibilities: ['Hand Tracking 手势交互','XR 3D UI 开发', 'UGUI / TextMeshPro 界面开发', '多媒体播放系统','Quest 平台适配'],
-    summary: '面向高校周年庆展示场景开发的 XR 导览应用，负责 Meta Quest 平台交互模块开发，实现手势操作、3D UI 菜单及多媒体展示功能。',
+    responsibilities: ['UGUI 开发','3D UI 开发', 'Hand Tracking', 'VideoPlayer','Quest 平台适配'],
+    summary: '面向 Meta Quest 平台开发校园 XR 导览系统，负责手势交互、3D UI、多媒体展示及平台适配，实现沉浸式校园导览体验。',
     highlights: [
       { title: 'Hand Tracking 手势交互', content: '基于 Meta ISDK 实现 XR 场景手势交互，支持通过手势完成 3D UI 菜单点击、选择等操作，提升自然交互体验。' },
       { title: 'XR 3D UI 交互系统', content: '结合 UGUI 与 TextMeshPro 构建 XR 场景内交互界面，实现菜单展示、信息显示及用户操作反馈。' },
