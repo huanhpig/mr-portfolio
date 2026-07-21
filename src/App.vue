@@ -348,7 +348,7 @@ const projects = ref([
     category: 'AI 辅助开发 / Unity 编辑器效率实践',
     shortCategory: '🤖 AI 自动化实践',
     role: 'Unity 开发工程师',
-    summary: '结合 Codex 与 VS Code Copilot，通过 Unity MCP 对 Unity 编辑器进行自然语言控制，演示 AI 在对象创建、组件配置、场景搭建及编辑器操作中的辅助开发能力，探索 AI 提升 Unity 开发效率的实际应用。',
+    summary: '使用Codex、GitHub Copilot结合Unity MCP，通过自然语言完成对象创建、组件配置、脚本修改及编辑器操作，提高Unity开发效率，探索AI辅助研发工作流。',
     highlights: [
       { title: '自然语言控制 Unity 编辑器', content: '通过 Unity MCP 使用自然语言完成 GameObject 创建、组件添加、Hierarchy 管理及基础编辑器操作，减少重复性编辑工作，提高开发效率。' },
       { title: 'AI 辅助 XR 场景开发', content: '结合 XR 项目开发流程，演示 AI 辅助完成场景对象创建、组件配置、脚本修改及常见问题排查，提升日常开发效率。' },
