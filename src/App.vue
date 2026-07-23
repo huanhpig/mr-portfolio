@@ -274,7 +274,7 @@ const projects = ref([
   {
     id: 1,
     navTitle: 'MR 空间漫游系统',
-    title: 'MR 混合现实家居与空间无缝漫游系统',
+    title: 'Unity 家居场景交互系统（MR）',
     category: '混合现实 / 场景构建',
     shortCategory: 'MR 漫游',
     role: '核心客户端开发',
@@ -291,7 +291,7 @@ const projects = ref([
   },
   {
     id: 2,
-    navTitle: 'XR 叙事互动系统',
+    navTitle: 'Unity XR 叙事互动项目',
     title: 'Unity XR 叙事与混合现实互动系统',
     category: '虚拟演出 / 混合现实',
     shortCategory: 'XR 叙事',
